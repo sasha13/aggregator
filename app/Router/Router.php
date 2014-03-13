@@ -8,7 +8,7 @@ class Router {
 
 
   public function __construct($url) {
-  	$this->url = $url;
+    $this->url = $url;
     $url_array = $this->parseUrl($url);
     $data = $this->determineController($url_array);
     $obj = $this->instantiateController($data);
@@ -16,15 +16,15 @@ class Router {
 
 
   public function getUrl() {
-  	return $this->url;
+    return $this->url;
   }
 
 
   public function parseUrl($url) {
-  	$route = explode('/', $url);
-  	$dump_empty = array_shift($route);
-  	$filtered = array_filter($route);
-  	return $filtered;
+    $route = explode('/', $url);
+    $dump_empty = array_shift($route);
+    $filtered = array_filter($route);
+    return $filtered;
   }
 
 
