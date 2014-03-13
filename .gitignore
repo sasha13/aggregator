@@ -1,0 +1,9 @@
+*.swp
+*~
+.buildpath
+.project
+.settings
+.idea/*
+nbproject/
+DS_Store
+vendor/
