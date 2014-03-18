@@ -19,14 +19,5 @@
         <li><a href="#">Bookmarks</a></li>
       </ul>
     </div>
-    <div>
-      <h3>Register</h3>
-      <form action="register/process" method="post">
-        Username: <input type="text" name="Username" /><p>
-        Password: <input type="password" name="Password" />
-        <br>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
   </body>
 </html>
