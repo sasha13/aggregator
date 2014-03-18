@@ -5,13 +5,18 @@ namespace Html;
 
 class Html {
 
-  private $view_name;
+  private $viewName;
   private $data;
   private $controllerName;
 
-  public function __construct() {}
+  public function __construct($controllerName) {
+    $this->controllerName = $controllerName;
+  }
 
-  public static function render($view_name, array $data) {
-
+  public function render($viewName, array $data) {
+    //var_dump(TEMPLATE_DIR);
+    //var_dump($data);
+    $fileToRender = TEMPLATE_DIR . $this->controllerName . '/' . $viewName . '.php';
+    echo file_get_contents($fileToRender);
   }
 }
