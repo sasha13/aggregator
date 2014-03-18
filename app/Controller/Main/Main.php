@@ -20,4 +20,10 @@ class Main {
     $fullNameArray = explode('\\', $fullName);
     return $name = end($fullNameArray);
   }
+
+  public function getControllerNameLowercase() {
+    $fullName = get_class($this);
+    $fullNameArray = explode('\\', $fullName);
+    return $name = strtolower(end($fullNameArray));
+  }
 }
