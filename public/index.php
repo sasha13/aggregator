@@ -12,7 +12,7 @@ define('TEMPLATE_DIR', ROOT_DIR . '/templates/');
 //var_dump(ROOT_DIR);
 //die();
 
-$conn = Db::getConnection();
+//$conn = Db::getConnection();
 //$sql = "SELECT * FROM user";
 //$q = $conn->query($sql);
 //var_dump($q->fetch(PDO::FETCH_OBJ));
