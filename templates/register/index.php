@@ -3,7 +3,7 @@
   <title>Aggregator</title>
   <body>
     <div>
-      <h2>Aggregator</h2>
+      <h2>{@title}</h2>
     </div>
     <div>
       <ul>
@@ -22,8 +22,8 @@
     <div>
       <h3>Register</h3>
       <form action="register/process" method="post">
-        Username: <input type="text" name="Username" /><p>
-        Password: <input type="password" name="Password" />
+        Username: <input type="text" name="username" /><p>
+        Password: <input type="password" name="password" />
         <br>
         <input type="submit" value="Submit" />
       </form>
