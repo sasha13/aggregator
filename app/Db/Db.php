@@ -32,4 +32,32 @@ class Db {
     return self::$db;
   }
 
+  public static function checkLoginCredentials($conn, array $data) {
+    $sql = "SELECT * FROM user WHERE username = :username AND password = :password";
+    $q = $conn->prepare($sql);
+    $q->execute(array(':username' => $data['username'], ':password' => md5($data['salt'] . $data['password'])));
+    $result = $q->fetchAll(\PDO::FETCH_ASSOC);
+    //var_dump($result); die('sss');
+
+    if (!$q) {
+      die("Execute query error, because: ". $conn->errorInfo());
+    } else {
+      empty($result) ? $login = false : $login = true;
+      return $login;
+    }
+  }
+
+  public static function registerUser($conn, array $data) {
+    $sql = "INSERT INTO user (username, password) VALUES (:username, :password)";
+    $q = $conn->prepare($sql);
+    $q->execute(array(':username' => $data['username'], ':password' => md5($data['salt'] . $data['password'])));
+
+    if (!$q) {
+      die("Execute query error, because: ". $conn->errorInfo());
+    } else {
+      echo 'Registration succesfull.';
+      header('Location: /');
+    }
+  }
+
 }
