@@ -5,6 +5,8 @@ namespace Controller\Login;
 use Controller\Main\Main;
 use Html\Html;
 use Db\Db;
+use Config\GeneralConfig;
+use Utils\Utils;
 
 
 class Login extends Main {
@@ -26,6 +28,18 @@ class Login extends Main {
   }
 
   public function process() {
-    var_dump($_POST);
+    $isLoginFormPopulatedCorrectly = Utils::isRegisterFormPopulatedCorrectly();
+    if ($isLoginFormPopulatedCorrectly) {
+      $data = Utils::prepareDataForUserRegistrationOrLogin();
+    } else {
+      die('Username and password must be entered.');
+    }
+    $conn = Db::getConnection();
+    $loginCredentialsAreOk = Db::checkLoginCredentials($conn, $data);
+    if ($loginCredentialsAreOk) {
+      header('Location: /user/index');
+    } else {
+      header('Location: /login');
+    }
   }
 }

@@ -16,7 +16,7 @@ class Utils {
   }
 
 
-  public static function prepareDataForUserRegistration() {
+  public static function prepareDataForUserRegistrationOrLogin() {
     $data = array(
       'username' => $_POST['username'],
       'password' => $_POST['password'],

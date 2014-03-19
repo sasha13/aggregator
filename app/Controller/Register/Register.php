@@ -27,7 +27,7 @@ class Register extends Main {
   public function process() {
     $isRegisterFormPopulatedCorrectly = Utils::isRegisterFormPopulatedCorrectly();
     if ($isRegisterFormPopulatedCorrectly) {
-      $data = Utils::prepareDataForUserRegistration();
+      $data = Utils::prepareDataForUserRegistrationOrLogin();
     } else {
       die('Username and password must be entered.');
     }
