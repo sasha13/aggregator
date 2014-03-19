@@ -16,18 +16,16 @@ class Register extends Main {
   public function index() {
     $controllerName = $this->getControllerNameLowercase();
 //     $model = loadModel('model_name');
-    $data = array('title' => 'Aggggregator');
+    $data = array('title' => 'Aggregator');
     $html = new Html($controllerName);
     $html->render('index', $data);
   }
 
-  public function view() {
-    var_dump($this->data);
-  }
+  public function view(){}
 
   public function process() {
     var_dump($_POST);
-    if (isset($_POST['username']) && isset($_POST['password'])) {
+    if (!empty($_POST['username']) && !empty($_POST['password'])) {
       $username = $_POST['username'];
       $password = $_POST['password'];
       $salt = 'th1rt33n';
