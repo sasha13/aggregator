@@ -7,6 +7,7 @@ use Html\Html;
 use Db\Db;
 use Config\GeneralConfig;
 use Utils\Utils;
+use Model\Login as ModelLogin;
 
 
 class Login extends Main {
@@ -35,11 +36,12 @@ class Login extends Main {
       die('Username and password must be entered.');
     }
     $conn = Db::getConnection();
-    $loginCredentialsAreOk = Db::checkLoginCredentials($conn, $data);
-    if ($loginCredentialsAreOk) {
-      header('Location: /user/index');
+    $loginCredentialsAreOk = ModelLogin::checkLoginCredentials($conn, $data);
+    if (!$loginCredentialsAreOk) {
+      Utils::redirect('/login');
     } else {
-      header('Location: /login');
+      $userId = $loginCredentialsAreOk['user_id'];
+      Utils::redirect("/user/view/{$userId}");
     }
   }
 }

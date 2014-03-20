@@ -6,6 +6,7 @@ use Controller\Main\Main;
 use Html\Html;
 use Db\Db;
 use Utils\Utils;
+use Model\Register as ModelRegister;
 
 
 class Register extends Main {
@@ -32,7 +33,7 @@ class Register extends Main {
       die('Username and password must be entered.');
     }
     $conn = Db::getConnection();
-    Db::registerUser($conn, $data);
+    ModelRegister::registerUser($conn, $data);
   }
 
 }
