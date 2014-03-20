@@ -25,5 +25,9 @@ class Utils {
     return $data;
   }
 
+  public static function redirect($url) {
+    header("Location: {$url}");
+  }
+
 
 }
