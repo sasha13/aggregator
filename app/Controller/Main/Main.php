@@ -5,11 +5,11 @@ namespace Controller\Main;
 
 class Main {
 
-  public $data;
+  //public $data;
 
-  public function __construct($data) {
-    $this->data = $data;
-  }
+  //public function __construct($data) {
+  //  $this->data = $data;
+  //}
 
   public function index() {
 

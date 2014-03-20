@@ -10,9 +10,9 @@ use Utils\Utils;
 
 class Register extends Main {
 
-  public function __construct($data) {
-    $this->data = $data;
-  }
+  //public function __construct($data) {
+  //  $this->data = $data;
+  //}
 
   public function index() {
     $controllerName = $this->getControllerNameLowercase();
