@@ -29,5 +29,18 @@ class Utils {
     header("Location: {$url}");
   }
 
+  public static function checkIfUsernameExists($conn, $username) {
+    $sql = "SELECT user_id FROM user WHERE username = :username";
+    $q = $conn->prepare($sql);
+    $q->execute(array(':username' => $username));
+    $result = $q->fetch(\PDO::FETCH_OBJ);
+
+    if (!$q) {
+      die("Execute query error, because: ". $conn->errorInfo());
+    } else {
+      empty($result) ? $user = false : $user = true;
+      return $user;
+    }
+  }
 
 }
