@@ -12,7 +12,7 @@ class Site extends Main {
   }
 
   public function index() {
-    //Html::layout = 'main';
+    //var_dump($_SERVER);die();
     $controllerName = $this->getControllerNameLowercase();
 //     $model = loadModel('model_name');
     $data = array('title' => 'Agggggregator');
