@@ -26,13 +26,19 @@ class Register extends Main {
   public function view(){}
 
   public function process() {
+    $conn = Db::getConnection();
+    $username = $_POST['username'];
     $isRegisterFormPopulatedCorrectly = Utils::isRegisterFormPopulatedCorrectly();
     if ($isRegisterFormPopulatedCorrectly) {
-      $data = Utils::prepareDataForUserRegistrationOrLogin();
+      $usernameExists = Utils::checkIfUsernameExists($conn, $username);
+      if ($usernameExists) {
+        die('Username exists.');
+      } else {
+        $data = Utils::prepareDataForUserRegistrationOrLogin();
+      }
     } else {
       die('Username and password must be entered.');
     }
-    $conn = Db::getConnection();
     ModelRegister::registerUser($conn, $data);
   }
 
