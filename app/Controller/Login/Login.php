@@ -37,7 +37,7 @@ class Login extends Main {
     if (!$loginCredentialsAreOk) {
       Utils::redirect('/login');
     } else {
-      session_start();
+      //session_start();
       $userId = $loginCredentialsAreOk['user_id'];
       $username = ModelUser::getUserName($userId);
       $_SESSION['member'] = $username;

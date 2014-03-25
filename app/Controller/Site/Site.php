@@ -13,7 +13,7 @@ class Site extends Main {
   }
 
   public function index() {
-    session_start();
+    //session_start();
     var_dump($_SESSION);
     $controllerName = $this->getControllerNameLowercase();
     $data = array('title' => 'Agggggregator');
