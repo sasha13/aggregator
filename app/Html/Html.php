@@ -12,7 +12,7 @@ class Html {
     $this->controllerName = $controllerName;
   }
 
-  public function render($viewName, array $data) {
+  public function render($viewName, array $data = array()) {
     $fileToRender = TEMPLATE_DIR . $this->controllerName . '/' . $viewName . '.php';
     //echo file_get_contents($fileToRender);
 
