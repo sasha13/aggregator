@@ -43,4 +43,13 @@ class Utils {
     }
   }
 
+  public static function isUserLoggedIn() {
+    if (empty($_SESSION['member'])) {
+      return false;
+    } else {
+      session_start();
+      return true;
+    }
+  }
+
 }
