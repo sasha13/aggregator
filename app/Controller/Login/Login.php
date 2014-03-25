@@ -5,20 +5,17 @@ namespace Controller\Login;
 use Controller\Main\Main;
 use Html\Html;
 use Db\Db;
-use Config\GeneralConfig;
 use Utils\Utils;
 use Model\Login as ModelLogin;
+use Model\User as ModelUser;
 
 
 class Login extends Main {
 
-  //public function __construct($data) {
-  //  $this->data = $data;
-  //}
+  public function __construct() {}
 
   public function index() {
     $controllerName = $this->getControllerNameLowercase();
-//     $model = loadModel('model_name');
     $data = array('title' => 'Aggregator');
     $html = new Html($controllerName);
     $html->render('index', $data);
@@ -40,8 +37,12 @@ class Login extends Main {
     if (!$loginCredentialsAreOk) {
       Utils::redirect('/login');
     } else {
+      session_start();
       $userId = $loginCredentialsAreOk['user_id'];
+      $username = ModelUser::getUserName($userId);
+      $_SESSION['member'] = $username;
       Utils::redirect("/user/view/{$userId}");
     }
   }
+
 }

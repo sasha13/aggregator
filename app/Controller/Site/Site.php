@@ -4,6 +4,7 @@ namespace Controller\Site;
 
 use Controller\Main\Main;
 use Html\Html;
+use Utils\Utils;
 
 class Site extends Main {
 
@@ -12,12 +13,16 @@ class Site extends Main {
   }
 
   public function index() {
-    //var_dump($_SERVER);die();
+    session_start();
+    var_dump($_SESSION);
     $controllerName = $this->getControllerNameLowercase();
-//     $model = loadModel('model_name');
     $data = array('title' => 'Agggggregator');
     $html = new Html($controllerName);
-    $html->render('index', $data);
+    if (Utils::isUserLoggedIn()) {
+      $html->render('index_auth');
+    } else {
+      $html->render('index', $data);
+    }
   }
 
 }
