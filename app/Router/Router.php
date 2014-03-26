@@ -8,6 +8,8 @@ class Router {
 
 
   public function __construct($url) {
+    $urlParsedOnQuestionMark = explode('?', $url);
+    $url = $urlParsedOnQuestionMark[0];
     $this->url = $url;
     $url_array = $this->parseUrl($url);
     $data = $this->determineController($url_array);
