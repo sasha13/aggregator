@@ -71,15 +71,37 @@ class Router {
     $action = $data['action'];
     $controllerClass = $namespacePart . $controllerPart;
     $parameters = $data['parameters'];
-    if (class_exists($controllerClass)) {
-      $obj = new $controllerClass($parameters);
-      if (method_exists($controllerClass, $action)) {
-        $obj->$action();
+    try {
+      if (class_exists($controllerClass)) {
+        $obj = new $controllerClass($parameters);
+        if (method_exists($controllerClass, $action)) {
+          $obj->$action();
+        } else {
+          throw new \Exception("404; Action {$action} doesn't exist.");
+        }
       } else {
-        die('404; Action doesn\'n exist.');
+        throw new \Exception("404; Controller {$controllerPart} doesn't exist.");
       }
-    } else {
-      die('404; Controller doesn\'n exist.');
+    } catch (\Exception $e) {
+    	echo "Exception occured: " . $e->getMessage() . "\n on line: " . $e->getLine();
     }
   }
+  
+//   public function instantiateController(array $data) {
+//     $namespacePart = '\\Controller\\' . $data['controller'] . '\\';
+//     $controllerPart = $data['controller'];
+//     $action = $data['action'];
+//     $controllerClass = $namespacePart . $controllerPart;
+//     $parameters = $data['parameters'];
+//     if (class_exists($controllerClass)) {
+//       $obj = new $controllerClass($parameters);
+//       if (method_exists($controllerClass, $action)) {
+//         $obj->$action();
+//       } else {
+//         die('404; Action doesn\'n exist.');
+//       }
+//     } else {
+//       die('404; Controller doesn\'n exist.');
+//     }
+//   }
 }
